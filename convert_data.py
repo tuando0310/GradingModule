@@ -10,11 +10,10 @@ from services.preprocess_service import PreprocessService
 # CẤU HÌNH
 BASE_DIR = Path(__file__).parent
 INPUT_DIR = BASE_DIR / 'data' / 'keypoints3d' # Folder chứa 313 file con
-OUTPUT_FILE = BASE_DIR / 'data' / 'merged_camera_data.json' # File kết quả
+OUTPUT_FILE = BASE_DIR / 'data' / 'grading_data.json' # File kết quả
 TOTAL_FILES = 313 # Từ 000000 đến 000312
 
 def main():
-    print("--- BẮT ĐẦU QUÁ TRÌNH TIỀN XỬ LÝ DỮ LIỆU ---")
     
     # 1. Khởi tạo Service
     preprocessor = PreprocessService()
@@ -26,9 +25,9 @@ def main():
     # 3. Lưu kết quả
     if final_data:
         io.save_json(final_data, OUTPUT_FILE)
-        print(f"--- HOÀN TẤT: Dữ liệu đã lưu tại {OUTPUT_FILE} ---")
+        print(f"---Dữ liệu đã lưu tại {OUTPUT_FILE} ---")
     else:
-        print("--- THẤT BẠI: Không có dữ liệu nào được xử lý ---")
+        print("--- THẤT BẠI")
 
 if __name__ == "__main__":
     main()

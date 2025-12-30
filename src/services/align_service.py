@@ -44,4 +44,5 @@ class AlignmentService:
         """
         P = np.array(points)
         P_transformed = (scale * (P @ R)) + t
+        P_transformed[:, 2] *= -1
         return P_transformed.tolist()

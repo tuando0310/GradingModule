@@ -35,14 +35,10 @@ def main():
         print(f"    - Model Frame 0 Points: {len(model_frame0_points)}")
 
         # 3. Tính toán Ma trận biến đổi (CHỈ DÙNG FRAME 0)
-        print("[2] Đang tính toán tham số biến đổi dựa trên Frame 0...")
         scale, R, t = aligner.calculate_umeyama_params(cam_frame0_points, model_frame0_points)
         
-        print(f"    > Scale Factor cố định: {scale:.4f}")
-        print(f"    > Translation cố định: {t}")
+       
 
-        # 4. Áp dụng biến đổi cho TOÀN BỘ 313 Frame
-        print(f"[3] Đang áp dụng biến đổi cho {len(camera_sequence)} frames...")
         
         aligned_sequence = []
         
@@ -59,9 +55,7 @@ def main():
             })
 
         # 5. Lưu kết quả
-        print("[4] Lưu file kết quả...")
         io.save_json(aligned_sequence, OUTPUT_FILE)
-        print("--- HOÀN TẤT ---")
 
     except Exception as e:
         print(f"[ERROR] Có lỗi xảy ra: {e}")
